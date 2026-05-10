@@ -1,49 +1,29 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px 'Helvetica Neue'}
-    span.s1 {font: 12.0px Helvetica}
-    span.s2 {font: 13.0px 'Helvetica Neue'}
-  </style>
-</head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Audio Check&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script type="text/javascript" src="https://s3.amazonaws.com/mcd-headphone-check/v1.0/src/HeadphoneCheck.min.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" type="text/css" href="https://s3.amazonaws.com/mcd-headphone-check/v1.0/src/HeadphoneCheckStyle.css"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">      </span>$(document).ready(function() {</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>$(document).on('hcHeadphoneCheckEnd', function(event, data) {</p>
-<p class="p1"><span class="Apple-converted-space">          </span>var didPass = data.didPass;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">          </span>if (didPass) {</p>
-<p class="p3"><span class="s1"><span class="Apple-converted-space">            </span>window.location.href = "<a href="https://qualtricsxmyjpbgm848.qualtrics.com/jfe/form/SV_1RiR2W7ImQC6Qf4"><span class="s2">https://qualtricsxmyjpbgm848.qualtrics.com/jfe/form/SV_1RiR2W7ImQC6Qf4</span></a>?headphone=passed";</span></p>
-<p class="p1"><span class="Apple-converted-space">          </span>} else {</p>
-<p class="p3"><span class="s1"><span class="Apple-converted-space">            </span>window.location.href = "<a href="https://qualtricsxmyjpbgm848.qualtrics.com/jfe/form/SV_1RiR2W7ImQC6Qf4"><span class="s2">https://qualtricsxmyjpbgm848.qualtrics.com/jfe/form/SV_1RiR2W7ImQC6Qf4</span></a>?headphone=failed";</span></p>
-<p class="p1"><span class="Apple-converted-space">          </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>HeadphoneCheck.runHeadphoneCheck({doCalibration: false});</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">      </span>});</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="hc-container"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">  </span>&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
-</body>
+  <head>
+    <title>Audio Check</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://s3.amazonaws.com/mcd-headphone-check/v1.0/src/HeadphoneCheck.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://s3.amazonaws.com/mcd-headphone-check/v1.0/src/HeadphoneCheckStyle.css">
+
+    <script>
+      $(document).ready(function() {
+
+        $(document).on('hcHeadphoneCheckEnd', function(event, data) {
+          var didPass = data.didPass;
+          if (didPass) {
+            window.location.href = "https://qualtricsxmyjpbgm848.qualtrics.com/jfe/form/SV_1RiR2W7ImQC6Qf4?headphone=passed";
+          } else {
+            window.location.href = "https://qualtricsxmyjpbgm848.qualtrics.com/jfe/form/SV_1RiR2W7ImQC6Qf4?headphone=failed";
+          }
+        });
+
+        HeadphoneCheck.runHeadphoneCheck({doCalibration: false});
+
+      });
+    </script>
+  </head>
+  <body>
+    <div id="hc-container"></div>
+  </body>
 </html>
