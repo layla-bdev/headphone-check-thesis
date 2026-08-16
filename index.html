@@ -40,20 +40,30 @@
     </style>
 
     <script>
-      $(document).ready(function() {
+$(document).ready(function() {
+  // Read the parameters Prolific appended to this page's URL
+  var urlParams = new URLSearchParams(window.location.search);
+  var prolificId = urlParams.get('PROLIFIC_PID') || '';
+  var studyId = urlParams.get('STUDY_ID') || '';
+  var sessionId = urlParams.get('SESSION_ID') || '';
 
-        $(document).on('hcHeadphoneCheckEnd', function(event, data) {
-          var didPass = data.didPass;
-          if (didPass) {
-            window.location.href = "https://qualtricsxmyjpbgm848.qualtrics.com/jfe/form/SV_1RiR2W7ImQC6Qf4?headphone=passed";
-          } else {
-            window.location.href = "https://qualtricsxmyjpbgm848.qualtrics.com/jfe/form/SV_1RiR2W7ImQC6Qf4?headphone=failed";
-          }
-        });
+  // Your SoSci survey's base URL
+  var soSciBaseUrl = "https://www.soscisurvey.de/Stimulus_check/";
 
-        HeadphoneCheck.runHeadphoneCheck({doCalibration: false});
+  $(document).on('hcHeadphoneCheckEnd', function(event, data) {
+    var didPass = data.didPass;
+    var headphoneStatus = didPass ? "passed" : "failed";
 
-      });
+    var redirectUrl = soSciBaseUrl 
+      + "?PROLIFIC_PID=" + encodeURIComponent(prolificId)
+      + "&STUDY_ID=" + encodeURIComponent(studyId)
+      + "&SESSION_ID=" + encodeURIComponent(sessionId)
+      + "&headphone=" + headphoneStatus;
+
+    window.location.href = redirectUrl;
+  });
+  HeadphoneCheck.runHeadphoneCheck({doCalibration: false});
+});
     </script>
   </head>
   <body>
